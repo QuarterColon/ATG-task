@@ -11,42 +11,47 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int currentIndex = 0;
+
 
   List screens = [
     Home(),
+
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffEEF3FD),
-      appBar: AppBar(
-        backgroundColor: Colors.black.withOpacity(0),
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SvgPicture.asset(
-            "assets/leading_icon.svg",
-          ),
-        ),
-        leadingWidth: 64,
-        actions: [
-          Padding(
+
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) =>
+        [SliverAppBar(
+          backgroundColor: Color(0xffEEF3FD),
+          surfaceTintColor: Color(0xffEEF3FD),
+          leading: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SvgPicture.asset("assets/action1.svg",width: 32,),
-                SizedBox(width: 16,),
-                SvgPicture.asset("assets/Notification_icon.svg", width: 32,),
-              ],
+            child: SvgPicture.asset(
+              "assets/leading_icon.svg",
             ),
-          )
+          ),
+          leadingWidth: 64,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SvgPicture.asset("assets/action1.svg",width: 32,),
+                  SizedBox(width: 16,),
+                  SvgPicture.asset("assets/Notification_icon.svg", width: 32,),
+                ],
+              ),
+            )
 
-        ],
+          ],
 
+        ),],
+        body: screens[BottomNav.selectedIndex!],
       ),
-      body: screens[currentIndex],
       bottomNavigationBar: BottomNav(),
     );
   }

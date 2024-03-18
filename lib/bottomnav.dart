@@ -3,23 +3,21 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 
 class BottomNav extends StatefulWidget {
-  const BottomNav({super.key});
+  BottomNav({super.key});
+  static int selectedIndex = 0;
 
   @override
   State<BottomNav> createState() => _BottomNavState();
 }
 
 class _BottomNavState extends State<BottomNav> {
-
-  int selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      onTap: (int currentIndex){
-        setState(() {
-          selectedIndex = currentIndex;
 
+    return BottomNavigationBar(
+      onTap: (int currentIndex) {
+        setState(() {
+          BottomNav.selectedIndex = currentIndex;
         });
       },
       type: BottomNavigationBarType.fixed,
@@ -46,11 +44,14 @@ class _BottomNavState extends State<BottomNav> {
           label: "Chat",
         ),
         BottomNavigationBarItem(
-          icon: SvgPicture.asset("assets/Profile_icon.svg"),
+          icon: CircleAvatar(
+            foregroundImage: AssetImage("assets/profile_image.png"),
+            radius: 10,
+          ),
           label: "Profile",
         ),
       ],
-      currentIndex: selectedIndex,
+      currentIndex: BottomNav.selectedIndex,
     );
   }
 }

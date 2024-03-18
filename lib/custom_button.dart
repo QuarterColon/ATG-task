@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CustomButton extends StatelessWidget {
-   final SvgPicture icon ;
+   final Widget icon ;
    final String text;
 
    const CustomButton({super.key, required this.icon, required this.text, });
@@ -12,6 +12,7 @@ class CustomButton extends StatelessWidget {
     return InkWell(
       onTap: () {},
       child: Container(
+        padding: EdgeInsets.all(16),
         height: 54,
         width: 180,
         decoration: BoxDecoration(
@@ -23,15 +24,16 @@ class CustomButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(8)),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             icon,
+            SizedBox(width: 12,),
             Text(
               text,
               style: TextStyle(
                 color: Color(0xff598BED),
                 fontWeight: FontWeight.bold,
-                fontSize: 16,
+                fontSize: 18,
 
               ),
             ),
