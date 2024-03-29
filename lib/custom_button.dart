@@ -30,6 +30,7 @@ class CustomButton extends StatelessWidget {
             SizedBox(width: 12,),
             Text(
               text,
+              maxLines: 1,
               style: TextStyle(
                 color: Color(0xff598BED),
                 fontWeight: FontWeight.bold,

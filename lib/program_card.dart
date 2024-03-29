@@ -37,7 +37,8 @@ class ProgramCard extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           ClipRRect(
             borderRadius: BorderRadius.vertical(top: Radius.circular(8),),
@@ -47,6 +48,8 @@ class ProgramCard extends StatelessWidget {
             padding: EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
                   programType,
@@ -60,13 +63,15 @@ class ProgramCard extends StatelessWidget {
                 ),
                 Text(
                   programName,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  maxLines: 1,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16 ,overflow: TextOverflow.ellipsis),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 25,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       bottomInfo,
